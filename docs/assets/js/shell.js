@@ -73,7 +73,7 @@
         </div>
       </div>
       <div class="footer__bottom">
-        <span><span class="footer__brand">FOCUS</span> · Recherche &amp; Text: Ansgar&nbsp;Graw</span>
+        <span><span class="footer__brand">FOCUS</span> · Recherche &amp; Text: Ansgar&nbsp;Graw · Redaktion &amp; Gestaltung: Perplexity&nbsp;Computer</span>
         <span>© 2026 · Alle Beträge und Befunde nach Aktenlage. Hypothesen sind als solche gekennzeichnet.</span>
       </div>
     </div>

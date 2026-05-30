@@ -139,12 +139,24 @@ figure.ig.compact img { max-height:90mm; }
 figure.ig figcaption { font-size:7.5pt; color:var(--muted); margin-top:4pt; }
 figure.ig figcaption b { color:var(--red); font-weight:700; letter-spacing:.05em; text-transform:uppercase; }
 
+/* full-page LANDSCAPE (rotated) infographic — for the data-dense graphics */
+.ig-land { page: fullbleed; page-break-after: always; width:210mm; height:280mm; position:relative; overflow:hidden; background:#fff; }
+.ig-land__rot { position:absolute; top:50%; left:50%; width:280mm; height:210mm; margin:-105mm -140mm; transform: rotate(90deg); transform-origin:center center; display:flex; flex-direction:column; padding:18mm 20mm; box-sizing:border-box; }
+.ig-land__kick { font-family:var(--sans); font-weight:700; font-size:9pt; letter-spacing:.14em; text-transform:uppercase; color:var(--red); display:flex; align-items:center; gap:8px; margin-bottom:5mm; }
+.ig-land__kick::before { content:""; width:26pt; height:3pt; background:var(--red); }
+.ig-land__img { flex:1; min-height:0; display:flex; align-items:center; justify-content:center; }
+.ig-land__img img { max-width:100%; max-height:100%; border:0.5pt solid var(--line); }
+.ig-land__cap { font-family:var(--sans); font-size:8pt; color:var(--muted); margin-top:5mm; }
+.ig-land__cap b { color:var(--red); font-weight:700; letter-spacing:.05em; text-transform:uppercase; }
+
 /* persona cards */
 .persona-grid { display:grid; grid-template-columns:1fr 1fr; gap:7pt; }
 .persona { border:0.5pt solid var(--line); padding:6pt 8pt; break-inside:avoid; }
 .persona__n { font-family:var(--serif); font-weight:700; font-size:11pt; color:var(--ink); margin:0; }
 .persona__r { font-family:var(--sans); font-weight:700; font-size:6.8pt; letter-spacing:.05em; text-transform:uppercase; color:var(--red); margin:1pt 0 4pt; }
 .persona__b { font-size:8pt; line-height:1.4; color:var(--body); margin:0; }
+.persona.has-photo { display:grid; grid-template-columns:18mm 1fr; gap:7pt; align-items:start; }
+.persona__photo { width:18mm; height:22mm; object-fit:cover; border:0.5pt solid var(--line); background:var(--bg-light); filter:grayscale(100%); }
 
 /* timeline */
 .tl { margin:7pt 0; }

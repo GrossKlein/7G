@@ -337,6 +337,10 @@ table.data .em { color:var(--focus-red); font-weight:600; }
 .persona__role { font-size:var(--text-xs); font-weight:600; letter-spacing:.06em;
   text-transform:uppercase; color:var(--focus-red); margin-bottom:var(--sp-3); }
 .persona__body { font-size:var(--text-sm); color:var(--ink-body); margin:0; }
+.persona__head { display:flex; align-items:flex-start; gap:var(--sp-4); }
+.persona__photo { width:64px; height:80px; flex:0 0 auto; object-fit:cover; border:1px solid var(--line);
+  border-radius:var(--radius); filter:grayscale(100%); background:var(--bg-light); }
+.persona__head .persona__name { margin-top:2px; }
 
 /* ============================================================
    PARAGRAPH-SECTIONS / PROSE
