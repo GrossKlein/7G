@@ -10,24 +10,19 @@
     { href: 'offshore.html',        label: 'Offshore' },
     { href: 'bewertung.html',       label: 'Bewertung' },
     { href: 'tunneling.html',       label: 'Tunneling' },
-    { href: 'personae.html',        label: 'Personen' },
     { href: 'strafanzeige.html',    label: 'Strafanzeige' },
     { href: 'dossier.html',         label: 'Dossier' },
   ];
 
   const current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
 
-  const LOGO = `<svg class="brand__mark" width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-    <rect x="1" y="1" width="30" height="30" rx="3" fill="#ee001c"/>
-    <path d="M9 8h14v3.4H12.6v3.5H21v3.4h-8.4V24H9V8Z" fill="#fff"/>
-  </svg>`;
+  const LOGO = '';
 
   const masthead = `
   <header class="masthead">
     <div class="masthead__inner">
-      <a class="brand" href="index.html" aria-label="FOCUS — Die SyncPilot-Akte">
-        ${LOGO}
-        <span class="brand__word">FOCUS</span>
+      <a class="brand" href="index.html" aria-label="Investigativ — Die SyncPilot-Akte">
+        <span class="brand__word">Die&nbsp;SyncPilot-Akte</span>
         <span class="brand__sub">Investigativ</span>
       </a>
       <span class="masthead__spacer"></span>
@@ -66,14 +61,13 @@
           <div class="footer__cols">
             <a href="bewertung.html">Bewertung</a>
             <a href="tunneling.html">Tunneling</a>
-            <a href="personae.html">Personen</a>
             <a href="strafanzeige.html">Strafanzeige</a>
             <a href="dossier.html">Dossier-Index</a>
           </div>
         </div>
       </div>
       <div class="footer__bottom">
-        <span><span class="footer__brand">FOCUS</span> · Recherche &amp; Text: Ansgar&nbsp;Graw</span>
+        <span><span class="footer__brand">Investigativ</span> · Recherche &amp; Text: Ansgar&nbsp;Graw</span>
         <span>© 2026 · Alle Beträge und Befunde nach Aktenlage. Hypothesen sind als solche gekennzeichnet.</span>
       </div>
     </div>
