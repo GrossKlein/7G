@@ -1,0 +1,165 @@
+/* ============================================================
+   DIE SYNCPILOT-AKTE — FOCUS PRINT TOKEN SET
+   Magazine 210×280mm · two-column grid · print-to-PDF
+   Separate from the web token set. Fraunces + IBM Plex Sans.
+   ============================================================ */
+
+@font-face { font-family:'Fraunces'; src:url('fraunces-var.woff2') format('woff2-variations'); font-weight:400 900; font-style:normal; }
+@font-face { font-family:'Fraunces'; src:url('fraunces-var.woff2') format('woff2-variations'); font-weight:400 900; font-style:italic; }
+@font-face { font-family:'IBM Plex Sans'; src:url('plex-400.woff2') format('woff2'); font-weight:400; }
+@font-face { font-family:'IBM Plex Sans'; src:url('plex-500.woff2') format('woff2'); font-weight:500; }
+@font-face { font-family:'IBM Plex Sans'; src:url('plex-600.woff2') format('woff2'); font-weight:600; }
+@font-face { font-family:'IBM Plex Sans'; src:url('plex-700.woff2') format('woff2'); font-weight:700; }
+
+:root{
+  --red:#ee001c; --red-deep:#cc0000; --maroon:#8a0a17;
+  --ink:#1a1a1a; --body:#2b2b2b; --muted:#6a6a6a; --line:#dcdcdc; --line-soft:#ededed;
+  --bg-warm:#f6f4f1; --bg-light:#f4f4f4; --teal:#224e49; --amber:#9a6a08; --green:#1d6b35;
+  --serif:'Fraunces',Georgia,serif; --sans:'IBM Plex Sans',Helvetica,Arial,sans-serif;
+}
+
+/* ---------- PAGE ---------- */
+@page {
+  size: 210mm 280mm;
+  margin: 18mm 16mm 18mm 16mm;
+  @bottom-left  { content: "Forensische Dokumentation"; font-family:'IBM Plex Sans',sans-serif; font-size:7.5pt; color:#6a6a6a; margin-top:4mm; }
+  @bottom-right { content: counter(page); font-family:'IBM Plex Sans',sans-serif; font-size:7.5pt; color:#6a6a6a; margin-top:4mm; }
+}
+@page :first { margin: 0; @bottom-left{content:"";} @bottom-right{content:"";} }   /* full-bleed cover, no footer */
+@page fullbleed { margin: 0; @bottom-left{content:"";} @bottom-right{content:"";} }
+
+* { box-sizing: border-box; }
+html,body { margin:0; padding:0; }
+body {
+  font-family: var(--sans);
+  font-size: 9.1pt;
+  line-height: 1.46;
+  color: var(--body);
+  -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+
+/* page primitives */
+.page { page-break-after: always; position: relative; }
+.page:last-child { page-break-after: auto; }
+/* cover + chapter dividers use the no-footer page box */
+.cover, .chapter, .bleed { page: fullbleed; }
+.bleed { width:210mm; height:280mm; position:relative; overflow:hidden; page: fullbleed; page-break-after: always; }
+
+h1,h2,h3,h4 { font-family:var(--serif); color:var(--ink); line-height:1.08; margin:0 0 6pt; font-weight:600; letter-spacing:-0.01em; }
+p { margin:0 0 6pt; }
+a { color:inherit; text-decoration:none; }
+
+/* ---------- COVER ---------- */
+.cover { width:210mm; height:280mm; background:var(--maroon); color:#fff; position:relative; overflow:hidden; page:fullbleed; page-break-after:always; }
+.cover__top { padding:14mm 16mm 0; display:flex; align-items:center; gap:9px; }
+.cover__word { font-family:var(--sans); font-weight:800; letter-spacing:.16em; font-size:24pt; }
+.cover__sub { font-family:var(--sans); font-weight:500; letter-spacing:.24em; font-size:8pt; text-transform:uppercase; color:rgba(255,255,255,.72); }
+.cover__band { position:absolute; left:0; right:0; top:118mm; height:3pt; background:var(--red); }
+.cover__body { position:absolute; left:16mm; right:16mm; top:128mm; }
+.cover__kicker { display:inline-block; background:var(--red); color:#fff; font-family:var(--sans); font-weight:700; font-size:8.5pt; letter-spacing:.14em; text-transform:uppercase; padding:4pt 9pt; margin-bottom:9mm; }
+.cover__title { font-family:var(--serif); font-weight:700; font-size:46pt; line-height:.98; letter-spacing:-0.02em; color:#fff; margin:0 0 8mm; }
+.cover__subtitle { font-family:var(--serif); font-style:italic; font-weight:500; font-size:20pt; line-height:1.1; color:rgba(255,255,255,.92); margin:-4mm 0 8mm; }
+.cover__lede { font-family:var(--sans); font-weight:400; font-size:12pt; line-height:1.5; color:rgba(255,255,255,.9); max-width:150mm; margin:0; }
+.cover__foot { position:absolute; left:16mm; right:16mm; bottom:14mm; display:flex; justify-content:space-between; align-items:flex-end; font-family:var(--sans); font-size:9pt; color:rgba(255,255,255,.78); border-top:1px solid rgba(255,255,255,.25); padding-top:8pt; }
+.cover__foot strong { color:#fff; font-weight:600; }
+
+/* ---------- RUNNING HEADER / FOOTER (simulated band per page) ---------- */
+.runhead { display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--line); padding-bottom:5pt; margin-bottom:9pt; font-family:var(--sans); font-size:7.5pt; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); }
+.runhead .b { font-weight:800; color:var(--red); letter-spacing:.12em; }
+
+/* TOC */
+.toc { margin-top:4pt; }
+.toc-row { display:grid; grid-template-columns:70pt 1fr 28pt; align-items:baseline; gap:8pt; padding:6pt 0; border-bottom:0.5pt solid var(--line-soft); }
+.toc-lead { font-family:var(--sans); font-weight:700; font-size:7.5pt; letter-spacing:.08em; text-transform:uppercase; color:var(--red); }
+.toc-t { font-family:var(--serif); font-weight:600; font-size:11pt; color:var(--ink); }
+.toc-p { font-family:var(--sans); font-weight:700; font-size:9pt; color:var(--muted); text-align:right; font-variant-numeric:tabular-nums; }
+/* manual runfoot removed — page numbers now via @page counter. Hide any leftover runfoot. */
+.runfoot { display:none; }
+
+/* ---------- CHAPTER DIVIDER ---------- */
+.chapter { width:210mm; height:280mm; background:var(--ink); color:#fff; position:relative; overflow:hidden; page:fullbleed; page-break-after:always; }
+.chapter__num { position:absolute; right:14mm; top:16mm; font-family:var(--serif); font-weight:700; font-size:90pt; color:rgba(255,255,255,.08); line-height:1; }
+.chapter__inner { position:absolute; left:18mm; right:18mm; bottom:32mm; }
+.chapter__kicker { display:flex; align-items:center; gap:9px; font-family:var(--sans); font-weight:700; font-size:9pt; letter-spacing:.16em; text-transform:uppercase; color:var(--red); margin-bottom:8mm; }
+.chapter__kicker::before { content:""; width:30pt; height:3pt; background:var(--red); }
+.chapter__title { font-family:var(--serif); font-weight:700; font-size:40pt; line-height:1.02; letter-spacing:-0.02em; color:#fff; margin:0 0 6mm; }
+.chapter__sub { font-family:var(--sans); font-size:11pt; line-height:1.5; color:rgba(255,255,255,.82); max-width:150mm; }
+
+/* ---------- EDITORIAL TYPE ---------- */
+.kicker { display:flex; align-items:center; gap:7px; font-family:var(--sans); font-weight:700; font-size:8pt; letter-spacing:.13em; text-transform:uppercase; color:var(--red); margin-bottom:5pt; }
+.kicker::before { content:""; width:22pt; height:2.5pt; background:var(--red); }
+h2.headline { font-size:24pt; line-height:1.04; margin:0 0 7pt; }
+h3.subhead { font-size:14pt; margin:11pt 0 5pt; }
+h4.minihead { font-family:var(--sans); font-weight:700; font-size:9pt; letter-spacing:.06em; text-transform:uppercase; color:var(--ink); margin:9pt 0 4pt; }
+.deck { font-family:var(--sans); font-weight:400; font-size:11.5pt; line-height:1.4; color:var(--ink); margin:0 0 7pt; }
+.dropcap::first-letter { font-family:var(--serif); font-weight:700; font-size:42pt; line-height:.8; float:left; padding:3pt 6pt 0 0; color:var(--red); }
+
+/* two-column flow */
+.cols { column-count:2; column-gap:8mm; column-rule:0.5pt solid var(--line-soft); }
+.cols p { text-align:justify; hyphens:auto; -webkit-hyphens:auto; margin-bottom:5.5pt; }
+.cols h3, .cols h4 { column-span:none; break-after:avoid; }
+.span-all { column-span:all; }
+
+/* ---------- COMPONENTS ---------- */
+.byline { font-family:var(--sans); font-size:8.5pt; color:var(--muted); margin:0 0 9pt; padding-bottom:6pt; border-bottom:1px solid var(--line); }
+.byline strong { color:var(--ink); font-weight:600; }
+
+.callout { background:var(--bg-warm); border-left:3pt solid var(--red); padding:7pt 9pt; margin:7pt 0; break-inside:avoid; }
+.callout__t { font-family:var(--sans); font-weight:700; font-size:7.5pt; letter-spacing:.1em; text-transform:uppercase; color:var(--red); margin:0 0 4pt; }
+.callout--teal{border-left-color:var(--teal);} .callout--teal .callout__t{color:var(--teal);}
+.callout--amber{border-left-color:var(--amber);} .callout--amber .callout__t{color:var(--amber);}
+.callout p:last-child{margin-bottom:0;} .callout p{font-size:8.6pt;}
+
+.pull { font-family:var(--serif); font-style:italic; font-weight:500; font-size:17pt; line-height:1.25; color:var(--ink); border-top:2pt solid var(--red); border-bottom:0.5pt solid var(--line); padding:8pt 0; margin:10pt 0; break-inside:avoid; column-span:all; }
+.pull cite { display:block; font-family:var(--sans); font-style:normal; font-weight:600; font-size:8pt; color:var(--muted); margin-top:5pt; }
+
+blockquote.legal { font-size:8.6pt; font-style:italic; color:var(--body); background:var(--bg-light); border-left:2.5pt solid #b9b9b9; padding:7pt 10pt; margin:8pt 0; break-inside:avoid; }
+
+/* KPI strip */
+.kpis { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin:7pt 0; break-inside:avoid; }
+.kpi { background:#fff; padding:7pt 8pt; }
+.kpi b { display:block; font-family:var(--serif); font-weight:700; font-size:18pt; color:var(--red); line-height:1; letter-spacing:-0.01em; }
+.kpi b.ink { color:var(--ink); }
+.kpi small { display:block; font-size:7pt; color:var(--muted); margin-top:4pt; line-height:1.3; }
+
+/* tables */
+table.data { width:100%; border-collapse:collapse; font-size:8pt; margin:7pt 0; break-inside:avoid; }
+table.data.flow { break-inside:auto; }
+table.data tr { break-inside:avoid; }
+table.data caption { text-align:left; font-family:var(--sans); font-weight:700; font-size:7pt; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); padding-bottom:4pt; }
+table.data th { text-align:left; font-family:var(--sans); font-weight:700; font-size:6.8pt; letter-spacing:.04em; text-transform:uppercase; color:var(--ink); background:var(--bg-light); padding:4.5pt 6pt; border-bottom:1.5pt solid var(--line); }
+table.data td { padding:4.5pt 6pt; border-bottom:0.5pt solid var(--line-soft); vertical-align:top; }
+table.data td.num { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+table.data .em { color:var(--red); font-weight:700; }
+
+/* infographic figure */
+figure.ig { margin:7pt 0; break-inside:avoid; column-span:all; }
+figure.ig img { width:100%; height:auto; max-height:104mm; object-fit:contain; object-position:left; border:0.5pt solid var(--line); display:block; }
+figure.ig.compact img { max-height:90mm; }
+figure.ig figcaption { font-size:7.5pt; color:var(--muted); margin-top:4pt; }
+figure.ig figcaption b { color:var(--red); font-weight:700; letter-spacing:.05em; text-transform:uppercase; }
+
+/* persona cards */
+.persona-grid { display:grid; grid-template-columns:1fr 1fr; gap:7pt; }
+.persona { border:0.5pt solid var(--line); padding:6pt 8pt; break-inside:avoid; }
+.persona__n { font-family:var(--serif); font-weight:700; font-size:11pt; color:var(--ink); margin:0; }
+.persona__r { font-family:var(--sans); font-weight:700; font-size:6.8pt; letter-spacing:.05em; text-transform:uppercase; color:var(--red); margin:1pt 0 4pt; }
+.persona__b { font-size:8pt; line-height:1.4; color:var(--body); margin:0; }
+
+/* timeline */
+.tl { margin:7pt 0; }
+.tl-item { border-left:1.5pt solid var(--line); padding:0 0 5.5pt 9pt; margin-left:3pt; break-inside:avoid; position:relative; }
+.tl-item::before { content:""; position:absolute; left:-4pt; top:2pt; width:7pt; height:7pt; border-radius:50%; background:#fff; border:2pt solid var(--red); }
+.tl-d { font-family:var(--sans); font-weight:700; font-size:7pt; letter-spacing:.05em; text-transform:uppercase; color:var(--red); }
+.tl-t { font-family:var(--serif); font-weight:600; font-size:10pt; color:var(--ink); margin:1pt 0 2pt; }
+.tl-b { font-size:8pt; line-height:1.4; margin:0; }
+
+/* pills */
+.pill { display:inline-block; font-family:var(--sans); font-size:6.5pt; font-weight:700; letter-spacing:.03em; padding:1.5pt 5pt; border-radius:999px; vertical-align:middle; }
+.pill.fact{background:#cfe8d3;color:var(--green);} .pill.hypo{background:#f6e6c8;color:var(--amber);}
+.pill.crit{background:#fbdce0;color:var(--red);} .pill.high{background:#f6e6c8;color:var(--amber);} .pill.mid{background:#e8e8e8;color:var(--muted);}
+
+hr.rule { border:0; border-top:0.5pt solid var(--line); margin:9pt 0; }
+hr.rule-red { border:0; border-top:2pt solid var(--red); width:36pt; margin:8pt 0; }
+.note { font-size:7.5pt; color:var(--muted); }
+.lead-q { font-family:var(--serif); font-weight:600; }
