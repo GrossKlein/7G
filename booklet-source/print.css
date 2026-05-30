@@ -55,10 +55,10 @@ a { color:inherit; text-decoration:none; }
 .cover__word { font-family:var(--sans); font-weight:800; letter-spacing:.16em; font-size:24pt; }
 .cover__sub { font-family:var(--sans); font-weight:500; letter-spacing:.24em; font-size:8pt; text-transform:uppercase; color:rgba(255,255,255,.72); }
 .cover__band { position:absolute; left:0; right:0; top:118mm; height:3pt; background:var(--red); }
-.cover__body { position:absolute; left:16mm; right:16mm; top:128mm; }
+.cover__body { position:absolute; left:16mm; right:16mm; top:120mm; }
 .cover__kicker { display:inline-block; background:var(--red); color:#fff; font-family:var(--sans); font-weight:700; font-size:8.5pt; letter-spacing:.14em; text-transform:uppercase; padding:4pt 9pt; margin-bottom:9mm; }
-.cover__title { font-family:var(--serif); font-weight:700; font-size:46pt; line-height:.98; letter-spacing:-0.02em; color:#fff; margin:0 0 8mm; }
-.cover__subtitle { font-family:var(--serif); font-style:italic; font-weight:500; font-size:20pt; line-height:1.1; color:rgba(255,255,255,.92); margin:-4mm 0 8mm; }
+.cover__title { font-family:var(--serif); font-weight:700; font-size:33pt; line-height:1.04; letter-spacing:-0.015em; color:#fff; margin:0 0 6mm; }
+.cover__subtitle { font-family:var(--serif); font-style:italic; font-weight:500; font-size:17pt; line-height:1.15; color:rgba(255,255,255,.92); margin:-2mm 0 7mm; }
 .cover__lede { font-family:var(--sans); font-weight:400; font-size:12pt; line-height:1.5; color:rgba(255,255,255,.9); max-width:150mm; margin:0; }
 .cover__foot { position:absolute; left:16mm; right:16mm; bottom:14mm; display:flex; justify-content:space-between; align-items:flex-end; font-family:var(--sans); font-size:9pt; color:rgba(255,255,255,.78); border-top:1px solid rgba(255,255,255,.25); padding-top:8pt; }
 .cover__foot strong { color:#fff; font-weight:600; }
