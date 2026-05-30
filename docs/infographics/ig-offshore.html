@@ -1,0 +1,61 @@
+<!DOCTYPE html><html lang="de"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../assets/css/infographic.css">
+<style>
+  .node{position:absolute; border-radius:5px; padding:9px 12px; background:#fff; border:1px solid var(--line); box-shadow:var(--shadow-sm); width:150px;}
+  .node b{display:block; font-size:13px; color:var(--ink); line-height:1.15;}
+  .node small{display:block; font-size:10.5px; color:var(--muted); margin-top:2px;}
+  .node .q{font-variant-numeric:tabular-nums; font-weight:700; color:var(--focus-red); font-size:13px;}
+  .node.center{background:var(--focus-maroon); border-color:var(--focus-maroon); width:172px; text-align:center;}
+  .node.center b{color:#fff; font-size:15px;} .node.center small{color:rgba(255,255,255,.8);}
+  .node.malta{border-left:4px solid var(--focus-red);}
+  .node.lux{border-left:4px solid var(--teal);}
+  .node.li{border-left:4px solid var(--amber);}
+</style></head>
+<body>
+<div class="ig" id="ig">
+  <div class="ig__bar"></div>
+  <div class="ig__head">
+    <div class="ig__kicker">Struktur · Malta · Luxemburg · Liechtenstein</div>
+    <h1 class="ig__title">Das Offshore-Netz: 60,13 % wandern ins Ausland</h1>
+    <p class="ig__sub">Binnen 18&nbsp;Monaten verlagern sich über 60&nbsp;% der SyncPilot-Anteile in Niedrigsteuer- und Hochopazität-Jurisdiktionen.</p>
+  </div>
+  <div class="ig__body" style="padding-top:14px;">
+    <div style="position:relative; flex:1; min-height:0;">
+      <svg style="position:absolute; inset:0; width:100%; height:100%;" preserveAspectRatio="none">
+        <g stroke="#cfcfcf" stroke-width="1.5" fill="none">
+          <line x1="295" y1="170" x2="120" y2="55"/>
+          <line x1="295" y1="170" x2="120" y2="135"/>
+          <line x1="295" y1="170" x2="120" y2="215"/>
+          <line x1="295" y1="170" x2="120" y2="295"/>
+          <line x1="465" y1="170" x2="650" y2="70"/>
+          <line x1="465" y1="170" x2="650" y2="265"/>
+        </g>
+      </svg>
+      <!-- center -->
+      <div class="node center" style="left:295px; top:140px;"><b>SYNCPILOT&nbsp;SE</b><small>HRB 40235 Augsburg</small></div>
+      <!-- malta quartet (left) -->
+      <div class="node malta" style="left:8px; top:30px;"><b>ZKP Innovations</b><small>Malta · C 105257</small><span class="q">22,17 %</span></div>
+      <div class="node malta" style="left:8px; top:110px;"><b>Lapis Ltd.</b><small>Malta · C 100496 · UBO unbek.</small><span class="q">10,30 %</span></div>
+      <div class="node malta" style="left:8px; top:190px;"><b>Attegia Holding</b><small>Malta · C 99813</small><span class="q">7,60 %</span></div>
+      <div class="node malta" style="left:8px; top:270px;"><b>Perseus ISH</b><small>Malta · C 101759 · UBO Hunstein</small><span class="q">7,76 %</span></div>
+      <!-- lux + li (right) -->
+      <div class="node lux" style="left:640px; top:45px;"><b>Tiven-Kaskade</b><small>Luxemburg · RAIF / S.A. · 4 Ebenen</small><span class="q">4,40 %</span></div>
+      <div class="node li" style="left:640px; top:240px;"><b>Schaeff Group</b><small>Liechtenstein · UBO unbek.</small><span class="q">2,30 %</span></div>
+      <!-- summary tiles -->
+      <div style="position:absolute; right:8px; bottom:0; width:300px;">
+        <div class="ig-kpis" style="grid-template-columns:1fr 1fr;">
+          <div class="ig-kpi"><b>60,13 %</b><small>Gesamt Offshore</small></div>
+          <div class="ig-kpi"><b>47,83 %</b><small>davon Malta-Quartett</small></div>
+        </div>
+      </div>
+    </div>
+    <div style="background:var(--bg-warm); border-left:4px solid var(--focus-red); padding:11px 16px; font-size:12.5px; line-height:1.45; margin-top:8px;">
+      <b style="color:var(--focus-red);">Interessenkonflikt:</b> RA Martin Hunstein ist UBO der Perseus ISH Ltd. (Malta) — und zugleich Prozessanwalt FXBs im Zivilverfahren. Der Verdacht: Parteiverrat nach §&nbsp;356&nbsp;StGB.
+    </div>
+  </div>
+  <div class="ig__foot">
+    <span class="ig-brand"><span class="ig__brand">FOCUS</span> · Die SyncPilot-Akte</span>
+    <span>Quelle: Malta Business Registry · Gesellschafterlisten · ZGV-Antrag München · BKA-Gutachten 04/2026</span>
+  </div>
+</div>
+</body></html>
