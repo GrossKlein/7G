@@ -1,0 +1,65 @@
+<!DOCTYPE html><html lang="de"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../assets/css/infographic.css">
+<style>
+  .vnode{position:absolute; border-radius:5px; padding:8px 11px; background:#fff; border:1px solid var(--line); box-shadow:var(--shadow-sm); width:172px;}
+  .vnode b{display:block; font-size:12.5px; color:var(--ink); line-height:1.15;}
+  .vnode small{display:block; font-size:10px; color:var(--muted); margin-top:2px; line-height:1.25;}
+  .vnode.bank{border-left:4px solid var(--focus-red);}
+  .vnode.tax{border-left:4px solid var(--teal);}
+  .vnode.share{border-left:4px solid var(--amber);}
+  .vnode.salary{border-left:4px solid #555;}
+  .vcenter{position:absolute; background:var(--focus-maroon); border-color:var(--focus-maroon); width:188px; text-align:center; border-radius:5px; padding:12px;}
+  .vcenter b{color:#fff; font-size:15px; display:block;} .vcenter small{color:rgba(255,255,255,.82); display:block; font-size:10.5px; margin-top:3px;}
+  .legend{display:flex; gap:16px; flex-wrap:wrap; font-size:11px; margin-top:6px;}
+  .legend span{display:inline-flex; align-items:center; gap:5px; color:var(--muted);}
+  .legend i{width:11px; height:11px; border-radius:2px; display:inline-block;}
+</style></head>
+<body>
+<div class="ig" id="ig">
+  <div class="ig__bar"></div>
+  <div class="ig__head">
+    <div class="ig__kicker">Vollstreckung · 13. Mai 2026</div>
+    <h1 class="ig__title">Das Vollstreckungsnetz: acht Pfändungen an einem Tag</h1>
+    <p class="ig__sub">Am Tag des Urteils stellt die Klägerin acht vorläufige Zahlungsverbote (§§ 845, 930 ZPO) zu — über 6,7 Mio. € Forderung.</p>
+  </div>
+  <div class="ig__body" style="padding-top:14px;">
+    <div style="position:relative; flex:1; min-height:0;">
+      <svg style="position:absolute; inset:0; width:100%; height:100%;" preserveAspectRatio="none">
+        <g stroke="#cfcfcf" stroke-width="1.5" fill="none">
+          <line x1="510" y1="175" x2="170" y2="42"/>
+          <line x1="510" y1="175" x2="170" y2="120"/>
+          <line x1="510" y1="175" x2="170" y2="198"/>
+          <line x1="510" y1="175" x2="170" y2="276"/>
+          <line x1="650" y1="175" x2="930" y2="42"/>
+          <line x1="650" y1="175" x2="930" y2="120"/>
+          <line x1="650" y1="175" x2="930" y2="198"/>
+          <line x1="650" y1="175" x2="930" y2="276"/>
+        </g>
+      </svg>
+      <!-- center -->
+      <div class="vcenter" style="left:496px; top:148px;"><b>Franz Xaver Bleicher</b><small>Schuldner · 6.706.610 €*</small></div>
+      <!-- left: bank + tax -->
+      <div class="vnode bank"  style="left:6px; top:18px;"><b>Bankhaus Anton Hafner</b><small>Konten · Depots · Schließfach · Westheim-Grundschuld</small></div>
+      <div class="vnode tax"   style="left:6px; top:98px;"><b>Finanzamt</b><small>Steuererstattungen</small></div>
+      <div class="vnode share" style="left:6px; top:176px;"><b>BOSYNC Beteiligungs UG</b><small>GmbH-Anteile (§ 15 GmbHG)</small></div>
+      <div class="vnode share" style="left:6px; top:254px;"><b>Quintus Beteiligungs GmbH</b><small>GmbH-Anteile (§ 15 GmbHG)</small></div>
+      <!-- right: salary streams + SE -->
+      <div class="vnode salary" style="left:928px; top:18px;"><b>SIP SyncPilot GmbH</b><small>Arbeitseinkommen</small></div>
+      <div class="vnode salary" style="left:928px; top:98px;"><b>SyncPilot Beteiligungs GmbH</b><small>Arbeitseinkommen</small></div>
+      <div class="vnode salary" style="left:928px; top:176px;"><b>SYNCPILOT</b><small>Arbeitseinkommen</small></div>
+      <div class="vnode share"  style="left:928px; top:254px;"><b>SYNCPILOT SE</b><small>Vorstandsbezüge · Beteiligung</small></div>
+    </div>
+    <div class="legend">
+      <span><i style="background:var(--focus-red)"></i>Bankvermögen</span>
+      <span><i style="background:var(--teal)"></i>Steuererstattung</span>
+      <span><i style="background:var(--amber)"></i>Geschäftsanteile</span>
+      <span><i style="background:#555"></i>Arbeitseinkommen</span>
+      <span style="margin-left:auto; font-style:italic;">* Forderung inkl. Zinsen bis 13.05.2026; steigt täglich.</span>
+    </div>
+  </div>
+  <div class="ig__foot">
+    <span class="ig-brand" style="font-weight:700;letter-spacing:.04em;color:#1a1a1a;">Die SyncPilot-Akte</span>
+    <span>Quelle: 8 vorläufige Zahlungsverbote vom 13.05.2026 (§§ 845, 930 ZPO) · Vorbehaltsurteil LG Augsburg 112 O 2848/25</span>
+  </div>
+</div>
+</body></html>
