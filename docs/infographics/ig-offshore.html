@@ -10,42 +10,55 @@
   .node.malta{border-left:4px solid var(--focus-red);}
   .node.lux{border-left:4px solid var(--teal);}
   .node.li{border-left:4px solid var(--amber);}
+  .node.ch{border-left:4px solid #1a1a1a; width:158px;}
+  .node.ch .q{color:#1a1a1a;}
+  .hopcap{position:absolute; font-size:10px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:#1a1a1a;}
 </style></head>
 <body>
 <div class="ig" id="ig">
   <div class="ig__bar"></div>
   <div class="ig__head">
-    <div class="ig__kicker">Struktur · Malta · Luxemburg · Liechtenstein</div>
-    <h1 class="ig__title">Das Offshore-Netz: 60,13 % wandern ins Ausland</h1>
-    <p class="ig__sub">Binnen 18&nbsp;Monaten verlagern sich über 60&nbsp;% der SyncPilot-Anteile in Niedrigsteuer- und Hochopazität-Jurisdiktionen.</p>
+    <div class="ig__kicker">Struktur · Malta · Luxemburg · Liechtenstein · Schweiz</div>
+    <h1 class="ig__title">Das Offshore-Netz — und der Sprung in die Schweiz</h1>
+    <p class="ig__sub">Über 60&nbsp;% der SyncPilot-Anteile wandern ins Ausland. Am 05.08.2025 reichen BOSYNC und Perseus 38.462&nbsp;Aktien an zwei neue Gesellschaften weiter.</p>
   </div>
-  <div class="ig__body" style="padding-top:14px;">
+  <div class="ig__body" style="padding-top:12px;">
     <div style="position:relative; flex:1; min-height:0;">
       <svg style="position:absolute; inset:0; width:100%; height:100%;" preserveAspectRatio="none">
         <g stroke="#cfcfcf" stroke-width="1.5" fill="none">
-          <line x1="295" y1="170" x2="120" y2="55"/>
-          <line x1="295" y1="170" x2="120" y2="135"/>
-          <line x1="295" y1="170" x2="120" y2="215"/>
-          <line x1="295" y1="170" x2="120" y2="295"/>
-          <line x1="465" y1="170" x2="650" y2="70"/>
-          <line x1="465" y1="170" x2="650" y2="265"/>
+          <line x1="470" y1="175" x2="168" y2="40"/>
+          <line x1="470" y1="175" x2="168" y2="112"/>
+          <line x1="470" y1="175" x2="168" y2="184"/>
+          <line x1="470" y1="175" x2="168" y2="256"/>
+          <line x1="470" y1="175" x2="620" y2="60"/>
+          <line x1="470" y1="175" x2="620" y2="150"/>
+        </g>
+        <!-- onward transfer arrows Malta/BOSYNC -> Switzerland -->
+        <defs><marker id="ar" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#1a1a1a"/></marker></defs>
+        <g stroke="#1a1a1a" stroke-width="1.6" fill="none" marker-end="url(#ar)" stroke-dasharray="4 3">
+          <line x1="160" y1="258" x2="905" y2="195"/>
+          <line x1="720" y1="150" x2="905" y2="200"/>
         </g>
       </svg>
       <!-- center -->
-      <div class="node center" style="left:295px; top:140px;"><b>SYNCPILOT&nbsp;SE</b><small>HRB 40235 Augsburg</small></div>
+      <div class="node center" style="left:392px; top:150px;"><b>SYNCPILOT&nbsp;SE</b><small>Augsburg · 5.554.292 Aktien</small></div>
       <!-- malta quartet (left) -->
-      <div class="node malta" style="left:8px; top:30px;"><b>ZKP Innovations</b><small>Malta · C 105257</small><span class="q">22,17 %</span></div>
-      <div class="node malta" style="left:8px; top:110px;"><b>Lapis Ltd.</b><small>Malta · C 100496 · UBO unbek.</small><span class="q">10,30 %</span></div>
-      <div class="node malta" style="left:8px; top:190px;"><b>Attegia Holding</b><small>Malta · C 99813</small><span class="q">7,60 %</span></div>
-      <div class="node malta" style="left:8px; top:270px;"><b>Perseus ISH</b><small>Malta · C 101759 · UBO Hunstein</small><span class="q">7,76 %</span></div>
-      <!-- lux + li (right) -->
-      <div class="node lux" style="left:640px; top:45px;"><b>Tiven-Kaskade</b><small>Luxemburg · RAIF / S.A. · 4 Ebenen</small><span class="q">4,40 %</span></div>
-      <div class="node li" style="left:640px; top:240px;"><b>Schaeff Group</b><small>Liechtenstein · UBO unbek.</small><span class="q">2,30 %</span></div>
+      <div class="node malta" style="left:6px; top:16px;"><b>ZKP Innovations</b><small>Malta · C 105257</small><span class="q">22,17 %</span></div>
+      <div class="node malta" style="left:6px; top:88px;"><b>Lapis Ltd.</b><small>Malta · C 100496</small><span class="q">10,30 %</span></div>
+      <div class="node malta" style="left:6px; top:160px;"><b>Attegia Holding</b><small>Malta · C 99813</small><span class="q">7,60 %</span></div>
+      <div class="node malta" style="left:6px; top:232px;"><b>Perseus ISH</b><small>Malta · C 101759 · UBO Hunstein</small><span class="q">7,76 %</span></div>
+      <!-- lux + li (mid-right) -->
+      <div class="node lux" style="left:600px; top:38px;"><b>Tiven-Kaskade</b><small>Luxemburg · RAIF / S.A.</small><span class="q">4,40 %</span></div>
+      <div class="node li" style="left:600px; top:128px;"><b>Schaeff Group</b><small>Liechtenstein · UBO unbek.</small><span class="q">2,30 %</span></div>
+      <!-- NEW: Switzerland / onward acquirers (far right) -->
+      <div class="hopcap" style="right:6px; top:6px; color:var(--focus-red);">Weiterübertragung · 05.08.2025</div>
+      <div class="node ch" style="right:6px; top:150px;"><b>ATLASI GROUP GmbH</b><small>Schweiz · Zug-Baar</small><span class="q">25.641 Aktien</span></div>
+      <div class="node ch" style="right:6px; top:248px;"><b>Callidus Ventures GmbH</b><small>München · HRB 304280</small><span class="q">12.821 Aktien</span></div>
       <!-- summary tiles -->
-      <div style="position:absolute; right:8px; bottom:0; width:300px;">
+      <div style="position:absolute; left:300px; bottom:2px; width:220px;">
         <div class="ig-kpis" style="grid-template-columns:1fr 1fr;">
           <div class="ig-kpi"><b>60,13 %</b><small>Gesamt Offshore</small></div>
-          <div class="ig-kpi"><b>47,83 %</b><small>davon Malta-Quartett</small></div>
+          <div class="ig-kpi"><b>38.462</b><small>Aktien Malta/BOSYNC → CH</small></div>
         </div>
       </div>
     </div>
@@ -55,7 +68,7 @@
   </div>
   <div class="ig__foot">
     <span class="ig-brand"><span class="ig__brand">FOCUS</span> · Die SyncPilot-Akte</span>
-    <span>Quelle: Malta Business Registry · Gesellschafterlisten · ZGV-Antrag München · BKA-Gutachten 04/2026</span>
+    <span>Quelle: Malta Business Registry · Aktionärsvereinbarung · HV-Niederschrift 05.08.2025 (Anlage S&amp;P 10) · BKA-Gutachten 04/2026</span>
   </div>
 </div>
 </body></html>
