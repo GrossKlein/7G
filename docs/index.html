@@ -2,10 +2,14 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
+  <!-- Security headers (meta fallback) -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' https: data:; font-src 'self'; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Die SyncPilot-Akte — Investigativ</title>
 <meta name="description" content="Wie aus einem 18,75-Millionen-Euro-Deal ein Urteil über 6,15 Millionen wurde: Die forensische Rekonstruktion des Falls SYNCPILOT SE, Franz Xaver Bleicher, Pictet und LVS.">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="assets/css/tokens.css">
 </head>
 <body>
@@ -28,8 +32,30 @@
         <span>Stand: 29. Mai 2026</span>
         <span class="pill pill--live">Urteil vom 13.05.2026</span>
       </div>
+      <button class="verdict-btn" popovertarget="verdict-popover" type="button">▸ Urteil auf einen Blick</button>
     </div>
   </section>
+
+  <!-- Verdict Popover (native, zero JS) -->
+  <div id="verdict-popover" class="verdict-popover" popover>
+    <div class="verdict-popover__row">
+      <span class="verdict-popover__val">6,706,610 €</span>
+      <span class="verdict-popover__lbl">Rückzahlung nebst Zinsen — LG Augsburg, 13.05.2026</span>
+    </div>
+    <div class="verdict-popover__row">
+      <span class="verdict-popover__val">Az. 112 O 2848/25</span>
+      <span class="verdict-popover__lbl">11. Zivilkammer — Vorbehaltsurteil</span>
+    </div>
+    <div class="verdict-popover__row">
+      <span class="verdict-popover__val">Verwirkt</span>
+      <span class="verdict-popover__lbl">Andienungsrecht Bleicher — 15 Monate zu spät</span>
+    </div>
+    <div class="verdict-popover__row">
+      <span class="verdict-popover__val">8</span>
+      <span class="verdict-popover__lbl">Pfändungsverfügungen — selber Tag wie das Urteil</span>
+    </div>
+    <button style="display:block;margin-top:1rem;background:none;border:none;cursor:pointer;font-size:.8rem;color:rgba(255,255,255,.5);text-align:right;width:100%;" popovertarget="verdict-popover" popovertargetaction="hide" type="button">Schließen ✕</button>
+  </div>
 
   <!-- VERDICT BANNER -->
   <section class="section--tight" style="background:var(--bg-warm); border-bottom:1px solid var(--line);">
@@ -189,5 +215,37 @@
 
 <div id="site-footer"></div>
 <script src="assets/js/shell.js"></script>
+
+  <!-- Document preview dialog: Vollstreckung -->
+  <dialog id="vollstreckung-preview" class="doc-preview" aria-labelledby="dlg-title-7g">
+    <div class="doc-preview__inner">
+      <div class="doc-preview__header">
+        <h2 class="doc-preview__title" id="dlg-title-7g">Vollstreckung — 13. Mai 2026</h2>
+        <button class="doc-preview__close" onclick="document.getElementById('vollstreckung-preview').close()" aria-label="Vorschau schließen" type="button">✕</button>
+      </div>
+      <div class="doc-preview__body">
+        <p style="font-family:var(--font-display);font-weight:700;color:var(--focus-red);margin:0 0 1rem;">8 Pfändungsverfügungen — am Tag des Urteils zugestellt</p>
+        <ul style="margin:0;padding-left:1.25rem;line-height:1.8;">
+          <li>Kontopfändung (Bankverbindung Bleicher)</li>
+          <li>Steuererstattungs-Pfändung (Finanzamt)</li>
+          <li>Anteilspfändung (SyncPilot-Konzern)</li>
+          <li>Grundschuldsicherung 1,75 Mio. € @ 15% p.a.</li>
+          <li>Vier weitere Beschlüsse nach §§ 845 / 930 ZPO</li>
+        </ul>
+        <p style="margin-top:1rem;"><a href="urteil.html" style="font-weight:600;color:var(--focus-red);">Zum vollständigen Urteilstext →</a></p>
+      </div>
+    </div>
+  </dialog>
+  <script>
+    document.querySelectorAll('[data-dialog]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const dlg = document.getElementById(btn.dataset.dialog);
+        if (dlg) dlg.showModal();
+      });
+    });
+    document.querySelectorAll('dialog.doc-preview').forEach(dlg => {
+      dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+    });
+  </script>
 </body>
 </html>

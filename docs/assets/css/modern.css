@@ -1,0 +1,284 @@
+/* ============================================================
+   Die SyncPilot-Akte — Modern UX Layer
+   Pass 1: View Transitions · Scroll Animations · Container
+   Queries · Popover API · Dialog · content-visibility
+   FOCUS design system tokens from tokens.css
+   ============================================================ */
+
+/* ── 0. CSS Layer order ── */
+@layer reset, tokens, base, layout, components, utilities;
+
+/* ── 1. Cross-document View Transitions ── */
+@view-transition {
+  navigation: auto;
+}
+
+.hero        { view-transition-name: site-hero; }
+.masthead    { view-transition-name: site-masthead; }
+.nav         { view-transition-name: site-nav; }
+.footer      { view-transition-name: site-footer; }
+
+@layer utilities {
+  @keyframes fade-in  { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes fade-out { from { opacity: 1; } to { opacity: 0; } }
+  @keyframes slide-out-up   { to   { translate: 0 -1.5rem; opacity: 0; } }
+  @keyframes slide-in-down  { from { translate: 0 -1.5rem; opacity: 0; } }
+
+  ::view-transition-old(site-hero) {
+    animation: 200ms ease-out both slide-out-up;
+  }
+  ::view-transition-new(site-hero) {
+    animation: 300ms ease-in  both slide-in-down;
+  }
+  ::view-transition-old(site-masthead),
+  ::view-transition-old(site-nav) {
+    animation: 150ms ease-out both fade-out;
+  }
+  ::view-transition-new(site-masthead),
+  ::view-transition-new(site-nav) {
+    animation: 200ms ease-in both fade-in;
+  }
+}
+
+/* ── 2. Scroll-driven entrance animations ── */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes card-rise {
+    from { opacity: 0; translate: 0 1.75rem; }
+    to   { opacity: 1; translate: 0 0; }
+  }
+  @keyframes kpi-pop {
+    from { opacity: 0; scale: 0.94; }
+    to   { opacity: 1; scale: 1; }
+  }
+  @keyframes fade-up {
+    from { opacity: 0; translate: 0 1rem; }
+    to   { opacity: 1; translate: 0 0; }
+  }
+
+  .card {
+    animation: card-rise linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 30%;
+  }
+
+  .kpi {
+    animation: kpi-pop linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 35%;
+  }
+
+  .callout {
+    animation: fade-up linear both;
+    animation-timeline: view();
+    animation-range: entry 5% entry 40%;
+  }
+
+  .prose p {
+    animation: fade-up linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 50%;
+  }
+}
+
+/* ── 3. Container queries ── */
+.card-grid {
+  container-type: inline-size;
+  container-name: card-grid;
+}
+
+@container card-grid (max-width: 520px) {
+  .card {
+    grid-column: 1 / -1;
+  }
+}
+
+.kpi-grid {
+  container-type: inline-size;
+  container-name: kpi-grid;
+}
+
+@container kpi-grid (max-width: 400px) {
+  .kpi {
+    padding: var(--sp-3);
+  }
+  .kpi__value {
+    font-size: var(--text-xl);
+  }
+}
+
+/* ── 4. :has() — state-driven styling without JS ── */
+
+/* Dim sibling cards when one is hovered */
+.card-grid:has(.card:hover) .card:not(:hover) {
+  opacity: 0.72;
+  transition: opacity 200ms ease;
+}
+
+/* KPI grid: highlight hovered KPI */
+.kpi-grid:has(.kpi:hover) .kpi:not(:hover) {
+  opacity: 0.65;
+  transition: opacity 150ms ease;
+}
+
+/* ── 5. content-visibility: auto ── */
+@layer layout {
+  .section:not(:first-of-type) {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 500px;
+  }
+}
+
+/* ── 6. Native <dialog> — Document preview ── */
+@layer components {
+  dialog.doc-preview {
+    border: none;
+    border-radius: var(--radius-lg, 8px);
+    padding: 0;
+    max-width: min(90vw, 720px);
+    max-height: 85dvh;
+    overflow: hidden;
+    box-shadow: 0 24px 80px rgba(26, 26, 26, 0.32);
+    background: var(--bg, #fff);
+  }
+
+  dialog.doc-preview::backdrop {
+    background: rgba(26, 26, 26, 0.55);
+    backdrop-filter: blur(3px);
+  }
+
+  @starting-style {
+    dialog.doc-preview[open] {
+      opacity: 0;
+      translate: 0 1.5rem;
+    }
+  }
+
+  dialog.doc-preview[open] {
+    opacity: 1;
+    translate: 0 0;
+    transition:
+      opacity 250ms ease,
+      translate 250ms ease,
+      display 250ms allow-discrete,
+      overlay 250ms allow-discrete;
+  }
+
+  .doc-preview__inner {
+    display: flex;
+    flex-direction: column;
+    max-height: 85dvh;
+  }
+
+  .doc-preview__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--sp-4) var(--sp-5);
+    border-bottom: 2px solid var(--focus-red, #ee001c);
+    background: var(--bg-warm, #f7f5f3);
+    flex-shrink: 0;
+  }
+
+  .doc-preview__title {
+    font-family: var(--font-display, 'Fraunces', serif);
+    font-weight: 700;
+    font-size: var(--text-md, 1.125rem);
+    color: var(--ink, #1a1a1a);
+    margin: 0;
+  }
+
+  .doc-preview__close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px 8px;
+    font-size: 1.1rem;
+    color: var(--muted, #666);
+    border-radius: var(--radius);
+  }
+  .doc-preview__close:hover { background: var(--line, #e0e0e0); }
+
+  .doc-preview__body {
+    padding: var(--sp-5);
+    overflow-y: auto;
+    flex: 1;
+    font-family: var(--font-body, 'IBM Plex Sans', sans-serif);
+    font-size: var(--text-base, 1rem);
+    line-height: var(--lh-base, 1.6);
+    color: var(--ink-body, #333);
+  }
+}
+
+/* ── 7. Popover API — Urteil-Kurzfassung ── */
+@layer components {
+  [popover].verdict-popover {
+    border: none;
+    border-radius: var(--radius-lg, 8px);
+    padding: var(--sp-5);
+    max-width: min(90vw, 440px);
+    background: var(--ink, #1a1a1a);
+    color: var(--bg, #fff);
+    box-shadow: 0 16px 48px rgba(26, 26, 26, 0.45);
+  }
+
+  @starting-style {
+    [popover].verdict-popover:popover-open {
+      opacity: 0;
+      translate: 0 -0.5rem;
+    }
+  }
+
+  [popover].verdict-popover:popover-open {
+    opacity: 1;
+    translate: 0 0;
+    transition:
+      opacity 200ms ease,
+      translate 200ms ease,
+      display 200ms allow-discrete,
+      overlay 200ms allow-discrete;
+  }
+
+  .verdict-popover__row {
+    display: flex;
+    gap: var(--sp-3);
+    align-items: baseline;
+    padding: var(--sp-2) 0;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+  }
+  .verdict-popover__row:last-of-type { border-bottom: none; }
+
+  .verdict-popover__val {
+    font-family: var(--font-display, 'Fraunces', serif);
+    font-weight: 700;
+    font-size: var(--text-lg, 1.375rem);
+    color: #ffd966;
+    min-width: 8ch;
+  }
+
+  .verdict-popover__lbl {
+    font-size: var(--text-sm, 0.8125rem);
+    color: rgba(255,255,255,0.8);
+    line-height: 1.4;
+  }
+
+  .verdict-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    margin-top: var(--sp-3);
+    padding: 0.4em 0.9em;
+    font-family: var(--font-body, 'IBM Plex Sans', sans-serif);
+    font-size: var(--text-sm, 0.8125rem);
+    font-weight: 600;
+    color: var(--focus-red, #ee001c);
+    background: transparent;
+    border: 1.5px solid var(--focus-red, #ee001c);
+    border-radius: var(--radius, 4px);
+    cursor: pointer;
+    transition: background 150ms ease, color 150ms ease;
+  }
+  .verdict-btn:hover {
+    background: var(--focus-red, #ee001c);
+    color: #fff;
+  }
+}
