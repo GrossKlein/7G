@@ -1,17 +1,24 @@
-name: CI — Lint & Audit
-
+name: CI — Lint, A11y & CSS
 on:
   push:
     branches: [main]
   pull_request:
-
 jobs:
-  html-validate:
+  quality:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - run: npm install -g html-validate
-      - run: html-validate "docs/*.html" "docs/infographics/*.html" --rule '{"void-style":"off"}' || true
+      - name: Install quality tools
+        run: npm install -g html-validate pa11y stylelint stylelint-config-standard serve
+      - name: HTML validate
+        run: html-validate "docs/**/*.html" --rule '{"void-style":"off"}'
+      - name: CSS lint
+        run: stylelint "docs/assets/css/*.css"
+      - name: Start static server
+        run: serve docs/ -l 8080 &
+      - run: sleep 3
+      - name: Accessibility — WCAG 2.1 AA
+        run: pa11y http://localhost:8080 --standard WCAG2AA --reporter cli || true
