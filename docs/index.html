@@ -55,6 +55,13 @@
   "keywords": "SyncPilot, Franz Xaver Bleicher, Pictet, LVS, Augsburg, Urteil"
 }
 </script>
+<link rel="manifest" href="/7G/manifest.json">
+<meta name="theme-color" content="#ee001c">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="SyncPilot-Akte">
+<link rel="apple-touch-icon" href="/7G/assets/icons/icon-192.png">
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -292,5 +299,12 @@
       dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
     });
   </script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/7G/sw.js', {scope: '/7G/'}).catch(function(){});
+  });
+}
+</script>
 </body>
 </html>

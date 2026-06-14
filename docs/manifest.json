@@ -1,0 +1,31 @@
+{
+  "name": "Die SyncPilot-Akte — Investigativ",
+  "short_name": "SyncPilot-Akte",
+  "description": "Forensische Rekonstruktion des Falls SyncPilot SE, Franz Xaver Bleicher, Pictet und LVS. Urteil: 6,15 Mio. €.",
+  "start_url": "/7G/",
+  "scope": "/7G/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#ee001c",
+  "background_color": "#ffffff",
+  "lang": "de",
+  "icons": [
+    {
+      "src": "assets/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
