@@ -398,3 +398,15 @@
     opacity: 1;
   }
 }
+
+/* ============================================================
+   PASS 3 — PERFORMANCE / CORE WEB VITALS
+   ============================================================ */
+@layer base {
+  @media (prefers-reduced-motion: no-preference) {
+    .card, .kpi, .callout, .prose p { will-change: transform, opacity; }
+  }
+}
+@layer layout {
+  .card-grid, .kpi-grid { contain: layout style; }
+}

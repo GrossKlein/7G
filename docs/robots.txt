@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /booklet-source/
+Sitemap: https://grossklein.github.io/7G/sitemap.xml
